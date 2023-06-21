@@ -1,0 +1,8 @@
+bin/Debug/net6.0/.NETWEBAPI.dll
+bin/Debug/net6.0/.NETWEBAPI.pdb
+obj/Debug/net6.0/.NETWEBAPI.dll
+obj/Debug/net6.0/.NETWEBAPI.pdb
+obj/Debug/net6.0/project.razor.json
+obj/Debug/net6.0/ref/.NETWEBAPI.dll
+obj/Debug/net6.0/refint/.NETWEBAPI.dll
+obj/staticwebassets.pack.sentinel
