@@ -11,26 +11,31 @@ app.MapGet("/AddHeader", (HttpResponse response) => {
 });
 
 //Salvar produto
-app.MapPost("/SaveProduct", (Product product) =>{
+app.MapPost("/products", (Product product) =>{
     ProductRepository.Add(product);
+    return Results.Created($"/products/{product.Code}", product.Code);
  });
 
 //Pesquisar pelo código do produto
-app.MapGet("/GetProduct/{code}", ([FromRoute] string code) => {
+app.MapGet("/products/{code}", ([FromRoute] string code) => {
     var product = ProductRepository.GetBy(code);
-    return product;
+    if(product != null)
+        return Results.Ok(product);
+    return Results.NotFound();    
 });
 
 //Editando produto
-app.MapPut("/EditProduct", (Product product) =>{
+app.MapPut("/products", (Product product) =>{
     var productSaved = ProductRepository.GetBy(product.Code);
     productSaved.Name = product.Name;
+    return Results.Ok();
 });
 
 //Deletando o produto
-app.MapDelete("/DeleteProduct/{code}", ([FromRoute] string code) => {
+app.MapDelete("/products/{code}", ([FromRoute] string code) => {
     var productSaved = ProductRepository.GetBy(code);
     ProductRepository.Delete(productSaved);
+    return Results.Ok();
 });
 
 app.Run();
